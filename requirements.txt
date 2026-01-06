@@ -4,5 +4,3 @@ transformers
 sentencepiece
 gtts
 fpdf
-openai-whisper
-ffmpeg-python
