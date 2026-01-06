@@ -1,19 +1,17 @@
 def chunk_text(text, max_length=400):
-    """
-    Splits long text into smaller meaningful chunks
-    """
     sentences = text.split(".")
     chunks = []
-    current_chunk = ""
+    current = ""
 
-    for sentence in sentences:
-        if len(current_chunk) + len(sentence) < max_length:
-            current_chunk += sentence + "."
+    for s in sentences:
+        if len(current) + len(s) < max_length:
+            current += s + "."
         else:
-            chunks.append(current_chunk.strip())
-            current_chunk = sentence + "."
+            chunks.append(current.strip())
+            current = s + "."
 
-    if current_chunk:
-        chunks.append(current_chunk.strip())
+    if current:
+        chunks.append(current.strip())
 
     return chunks
+
