@@ -1,6 +1,5 @@
 from transformers import pipeline
 
-# Load once (important for Streamlit)
 translator = pipeline(
     "translation",
     model="facebook/nllb-200-distilled-600M",
@@ -9,10 +8,9 @@ translator = pipeline(
 )
 
 def translate_to_tamil(chunks):
-    tamil_output = []
-
+    output = []
     for chunk in chunks:
-        translated = translator(chunk, max_length=512)
-        tamil_output.append(translated[0]['translation_text'])
+        result = translator(chunk, max_length=512)
+        output.append(result[0]["translation_text"])
+    return " ".join(output)
 
-    return " ".join(tamil_output)
